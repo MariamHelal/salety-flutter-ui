@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../views/Home_Page.dart';
+
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
 
@@ -8,10 +10,12 @@ class NavigationBarWidget extends StatefulWidget {
 }
 
 class _NavigationBarWidgetState extends State<NavigationBarWidget> {
-  int currentPageIndex = 0;
+  int currentPageIndex = 2;
+
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+     // shadowColor: Colors.green,
       backgroundColor: Colors.white,
       height: 65,
       onDestinationSelected: (int index) {
@@ -19,7 +23,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
           currentPageIndex = index;
         });
       },
-      // indicatorColor: Colors.amber[800],
+       // indicatorColor: Colors.amber[800],
       selectedIndex: currentPageIndex,
       destinations:  [
         const NavigationDestination(
@@ -31,9 +35,16 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
           icon: Icon(Icons.favorite_border),
           label: '',
         ),
-        CircleAvatar(
-          backgroundColor: Colors.white,
-          child: Image.asset('assets/floating_button.png',fit: BoxFit.cover,),
+        GestureDetector(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return HomePage();
+            }));
+          },
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Image.asset('assets/floating_button.png',fit: BoxFit.cover,),
+          ),
         ),
         const NavigationDestination(
           selectedIcon: Icon(Icons.notifications_none),

@@ -5,6 +5,7 @@ import 'package:salety_market/Widgets/Shopping/cart_provider.dart';
 import 'package:salety_market/Widgets/rapidly_and_fresh/product_list_view1.dart';
 import 'package:salety_market/Widgets/search_widget.dart';
 import 'package:salety_market/views/best_saller_page.dart';
+import 'package:salety_market/views/profile_page.dart';
 import '../Widgets/ShopByOffers/shop_by_offers_grid_view.dart';
 import '../Widgets/Shopping/cart_has_products.dart';
 import '../Widgets/best_seller/best_saller_list_view.dart';
@@ -131,15 +132,22 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           width: 5,
                         ),
-                        CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 25,
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Image.asset(
-                              'assets/profile_photo/photo.jpeg',
-                              fit: BoxFit.contain,
-                              alignment: Alignment.center,
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return ProfilePage();
+                            }));
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 25,
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Image.asset(
+                                'assets/profile_photo/photo.jpeg',
+                                fit: BoxFit.contain,
+                                alignment: Alignment.center,
+                              ),
                             ),
                           ),
                         )

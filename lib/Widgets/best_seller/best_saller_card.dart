@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
 import '../../models/best_saller_model.dart';
 
-class BestSallerCard extends StatelessWidget {
+class BestSallerCard extends StatefulWidget {
   BestSallerCard({super.key, required this.product, required this.OnTap});
   final BestSallerModel product;
   Function OnTap;
 
+  @override
+  State<BestSallerCard> createState() => _BestSallerCardState();
+}
+
+class _BestSallerCardState extends State<BestSallerCard> {
+  bool isLiked=false;
+  Future<bool> onLikeButtonTapped(bool isLiked) async{
+    /// send your request here
+    // final bool success= await sendRequest();
+
+    /// if failed, you can do nothing
+    // return success? !isLiked:isLiked;
+
+    return !isLiked;
+  }
   @override
   Widget build(BuildContext context) {
     Function onTap;
@@ -22,8 +38,33 @@ class BestSallerCard extends StatelessWidget {
           children: [
             Row(
               children: [
+                // LikeButton(
+                //   //circleColor: CircleColor(start: Colors.red,end: Colors.green),
+                //   isLiked: isLiked,
+                //   padding: EdgeInsets.all(10),
+                //   size: 30,
+                //   onTap: onLikeButtonTapped,
+                //   likeBuilder: (isLiked){
+                //     final color=isLiked?Colors.red :Colors.grey;
+                //
+                //     //print('isLiked $isLiked');
+                //     return Icon(
+                //       size: 30,
+                //       Icons.favorite,
+                //       color: color,
+                //     );
+                //   },
+                //
+                // ),
+
                 IconButton(
-                  onPressed: () {},
+
+                  onPressed: () {
+
+                   setState(() {
+
+                   });
+                  },
                   icon: const Icon(
                     Icons.favorite,
                     color: Colors.green,
@@ -54,7 +95,7 @@ class BestSallerCard extends StatelessWidget {
               height: 94,
               //width: MediaQuery.of(context).size.width / 2.3,
               child: Image.asset(
-                product.image,
+                widget.product.image,
                 fit: BoxFit.cover,
               ),
             ),
@@ -86,10 +127,10 @@ class BestSallerCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      product.productName,
+                      widget.product.productName,
                       style: const TextStyle(fontSize: 12),
                     ),
-                    Text(product.productQuantity),
+                    Text(widget.product.productQuantity),
                   ],
                 ),
               ),
@@ -111,7 +152,7 @@ class BestSallerCard extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Text(
-                      "${product.productPrice} EG",
+                      "${widget.product.productPrice} EG",
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -121,7 +162,7 @@ class BestSallerCard extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () {
 
-                      OnTap();
+                      widget.OnTap();
                       // Navigator.push(context,
                       //     MaterialPageRoute(builder: (context) {
                       //   return ShoppingPage();

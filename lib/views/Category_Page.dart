@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salety_market/Widgets/category_list_view.dart';
 import 'package:salety_market/views/Home_Page.dart';
-
-//import '../Widgets/category_card.dart';
 import '../Widgets/Navigation_bar.dart';
 import '../Widgets/Shopping/cart_provider.dart';
-//import '../models/category_model.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});

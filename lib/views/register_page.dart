@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:salety_market/views/Login_Page.dart';
-import 'package:salety_market/views/initial_page.dart';
 
 
 
@@ -20,15 +19,11 @@ class RegisterPage extends StatelessWidget {
           child: OutlinedButton(
             onPressed: () {
               Navigator.pop(context);
-              // Navigator.pop(context);
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) {
-              //       return onBackReturnPage;
-              //     }));
+
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
-              side: BorderSide(
+              side: const BorderSide(
                 color: Colors.black38,
                 width: .5,
               ),

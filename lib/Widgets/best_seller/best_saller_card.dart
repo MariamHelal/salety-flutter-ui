@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:salety_market/Widgets/Shopping/cart_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../db_helper.dart';
 import '../../models/best_saller_model.dart';
 
 class BestSallerCard extends StatelessWidget {

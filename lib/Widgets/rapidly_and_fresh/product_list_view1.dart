@@ -6,8 +6,6 @@ import '../../db_helper.dart';
 import '../../models/best_saller_model.dart';
 import '../../models/cart_model.dart';
 import '../Shopping/cart_provider.dart';
-import '../Shopping/shopping_card.dart';
-import '../best_seller/best_sales_grid_view_page.dart';
 
 class ProductListView1 extends StatefulWidget {
   ProductListView1({super.key});

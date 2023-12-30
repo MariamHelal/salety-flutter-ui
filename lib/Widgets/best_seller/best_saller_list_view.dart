@@ -6,11 +6,9 @@ import '../../db_helper.dart';
 import '../../models/best_saller_model.dart';
 import '../../models/cart_model.dart';
 import '../Shopping/cart_provider.dart';
-import '../Shopping/shopping_card.dart';
-import 'best_sales_grid_view_page.dart';
 
 class BestSallerListView extends StatefulWidget {
-  BestSallerListView({super.key});
+  const BestSallerListView({super.key});
 
   @override
   State<BestSallerListView> createState() => _BestSallerListViewState();
@@ -118,29 +116,7 @@ class _BestSallerListViewState extends State<BestSallerListView> {
                   }).onError((error, stackTrace) {
                     print(error.toString());
                   });
-                  // bool flag = false;
-                  // for (int i = 0; i < CartList.length; i++) {
-                  //   if (products[index].productName ==
-                  //       CartList[i].productName &&
-                  //       products[index].productPrice ==
-                  //           CartList[i].productPrice &&
-                  //       products[index].image == CartList[i].image &&
-                  //       products[index].productQuantity ==
-                  //           CartList[i].productQuantity) {
-                  //     flag = true;
-                  //   }
-                  // }
-                  // if (flag == false) {
-                  //   CartList.add(products[index]);
-                  //   products[index].totalPriceOfProduct =
-                  //       products[index].productPrice *
-                  //           products[index].numbersOfProduct;
-                  // } else {
-                  //   products[index].numbersOfProduct++;
-                  //   products[index].totalPriceOfProduct =
-                  //       products[index].productPrice *
-                  //           products[index].numbersOfProduct;
-                  // }
+
                 },
               );
             },

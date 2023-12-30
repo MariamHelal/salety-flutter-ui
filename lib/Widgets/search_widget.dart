@@ -39,13 +39,13 @@ class SearchView extends StatelessWidget {
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  prefixIcon: Icon(Icons.search,color: Colors.grey,),
+                  prefixIcon: const Icon(Icons.search,color: Colors.grey,),
                   hintText: 'البحث عن المنتجات',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     color: Colors.grey,
                   ),
                   hintTextDirection: TextDirection.rtl,
-                  suffixIcon: Icon(Icons.cancel,color: Colors.grey,),
+                  suffixIcon: const Icon(Icons.cancel,color: Colors.grey,),
                 ),
               ),
             ),
@@ -66,9 +66,9 @@ class SearchView extends StatelessWidget {
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
                         alignment: Alignment.centerLeft,
-                        child: Text('اختر تصنيف :',
+                        child: const Text('اختر تصنيف :',
                           textDirection: TextDirection.ltr,
                           textAlign: TextAlign.left,
                           style: TextStyle(
@@ -76,10 +76,10 @@ class SearchView extends StatelessWidget {
                           fontWeight: FontWeight.bold
                         ),),
                       ),
-                      FilterDialog(),
+                      const FilterDialog(),
                       //SizedBox(height: 10,),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         width: double.infinity,
                         child: ElevatedButton(
                           style:ElevatedButton.styleFrom(
@@ -90,7 +90,7 @@ class SearchView extends StatelessWidget {
                             print(filterCategory);
                             Navigator.pop(context);
                         },
-                          child: Text('Apply'),
+                          child: const Text('Apply'),
                         ),
                       ),
                     ],

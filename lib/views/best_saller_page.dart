@@ -4,12 +4,9 @@ import 'package:salety_market/views/Home_Page.dart';
 
 import '../Widgets/Shopping/cart_provider.dart';
 import '../Widgets/best_seller/best_sales_grid_view_page.dart';
-import '../Widgets/best_seller/best_saller_card.dart';
-import '../Widgets/best_seller/best_saller_list_view.dart';
-import '../models/best_saller_model.dart';
 
 class BestSallerPage extends StatelessWidget {
-  BestSallerPage({super.key});
+  const BestSallerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +14,7 @@ class BestSallerPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.grey[200],
         elevation: 0,
-        title: Text('عربة التسوق',style: TextStyle(
+        title: const Text('عربة التسوق',style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
         ),),
@@ -37,7 +34,7 @@ class BestSallerPage extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
-              side: BorderSide(
+              side: const BorderSide(
                 color: Colors.black38,
                 width: .5,
               ),
@@ -68,7 +65,7 @@ class BestSallerPage extends StatelessWidget {
                       Widget? child) {
                     return Text(
                       value.getCounter().toString(),
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     );
                   },
                 ),
@@ -83,12 +80,12 @@ class BestSallerPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
 
-              SizedBox(height: 10,),
-              Expanded(child: BestSallerGridView()),
+              const SizedBox(height: 10,),
+              const Expanded(child: BestSallerGridView()),
 
             ],
           ),

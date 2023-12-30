@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:salety_market/Widgets/Shopping/shopping_card.dart';
-
 import '../../db_helper.dart';
 import '../../models/best_saller_model.dart';
 import '../../models/cart_model.dart';
@@ -9,7 +7,7 @@ import '../Shopping/cart_provider.dart';
 import 'best_saller_card.dart';
 
 class BestSallerGridView extends StatefulWidget {
-  BestSallerGridView({super.key});
+  const BestSallerGridView({super.key});
 
   @override
   State<BestSallerGridView> createState() => _BestSallerGridViewState();
@@ -87,33 +85,6 @@ class _BestSallerGridViewState extends State<BestSallerGridView> {
                     });
 
 
-                    // bool flag = false;
-                    // for (int i = 0; i < CartList.length; i++) {
-                    //   if (products[index].productName ==
-                    //       CartList[i].productName &&
-                    //       products[index].productPrice ==
-                    //           CartList[i].productPrice &&
-                    //       products[index].image == CartList[i].image &&
-                    //       products[index].productQuantity ==
-                    //           CartList[i].productQuantity) {
-                    //     flag = true;
-                    //   }
-                    // }
-                    // if (flag == false) {
-                    //   CartList.add(products[index]);
-                    //   totalPriceOfProduct.add(products[index].productPrice *
-                    //       products[index].numbersOfProduct);
-                    //   // products[index].totalPriceOfProduct =
-                    //   //     products[index].productPrice *
-                    //   //         products[index].numbersOfProduct;
-                    //   totalOfTotal=calculateTotal() ;
-                    // } else {
-                    //   totalOfTotal=products[index].numbersOfProduct+1;
-                    //   // products[index].totalPriceOfProduct =
-                    //   //     products[index].productPrice *
-                    //   //         products[index].numbersOfProduct;
-                    //   totalOfTotal=calculateTotal();
-                    // }
                   },
                 ),
               );
@@ -156,31 +127,6 @@ class _BestSallerGridViewState extends State<BestSallerGridView> {
 
 
 
-                    // bool flag = false;
-                    // for (int i = 0; i < CartList.length; i++) {
-                    //   if (products[index].productName ==
-                    //           CartList[i].productName &&
-                    //       products[index].productPrice ==
-                    //           CartList[i].productPrice &&
-                    //       products[index].image == CartList[i].image &&
-                    //       products[index].productQuantity ==
-                    //           CartList[i].productQuantity) {
-                    //     flag = true;
-                    //   }
-                    // }
-                    // if (flag == false) {
-                    //   CartList.add(products[index]);
-                    //   products[index].totalPriceOfProduct =
-                    //       products[index].productPrice *
-                    //           products[index].numbersOfProduct;
-                    //   total+=products[index].totalPriceOfProduct;
-                    //
-                    // } else {
-                    //   totalOfTotal=products[index].numbersOfProduct+1;
-                    //   products[index].totalPriceOfProduct =
-                    //       products[index].productPrice *
-                    //           products[index].numbersOfProduct;
-                    // }
                   },
                 ),
               );

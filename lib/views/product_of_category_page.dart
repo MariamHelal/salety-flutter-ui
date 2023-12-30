@@ -7,11 +7,8 @@ import 'package:salety_market/views/Home_Page.dart';
 import '../Widgets/Navigation_bar.dart';
 import '../Widgets/Shopping/cart_has_products.dart';
 import '../Widgets/Shopping/cart_provider.dart';
-import '../Widgets/best_seller/best_sales_grid_view_page.dart';
-import '../Widgets/best_seller/best_saller_card.dart';
 import '../Widgets/product_of_category_grid_view.dart';
 import '../Widgets/search_widget.dart';
-import '../models/best_saller_model.dart';
 
 class ProductOfCategoriesPage extends StatelessWidget {
    ProductOfCategoriesPage({super.key, required this.category});
@@ -19,7 +16,7 @@ class ProductOfCategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: NavigationBarWidget(),
+      bottomNavigationBar: const NavigationBarWidget(),
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.green,
@@ -33,15 +30,11 @@ class ProductOfCategoriesPage extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context){
                   return HomePage();
                 }));
-                // Navigator.pop(context);
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) {
-                //       return onBackReturnPage;
-                //     }));
+
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                side: BorderSide(
+                side: const BorderSide(
                   color: Colors.black38,
                   width: .5,
                 ),
@@ -69,7 +62,7 @@ class ProductOfCategoriesPage extends StatelessWidget {
               onPressed: () {
 
                 Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return CartHasProducts();
+                  return const CartHasProducts();
                 }));
               },
               style: ElevatedButton.styleFrom(
@@ -84,7 +77,7 @@ class ProductOfCategoriesPage extends StatelessWidget {
                 label: Consumer<CartProvider>(
 
                   builder: (BuildContext context, value, Widget? child) {
-                    return Text(value.getCounter().toString(),style: TextStyle(color: Colors.white),);
+                    return Text(value.getCounter().toString(),style: const TextStyle(color: Colors.white),);
                   },
                 ),
 
@@ -113,11 +106,10 @@ class ProductOfCategoriesPage extends StatelessWidget {
              child: SearchView(),
            ),),
               SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   sliver: ProductsOfCategoryGridView()),
 
-           //const SliverToBoxAdapter(child: SizedBox(height: 30,))
-           // Spacer(flex: 2,),
+
 
 
           ],

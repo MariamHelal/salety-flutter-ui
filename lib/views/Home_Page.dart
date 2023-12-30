@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,16 +7,13 @@ import 'package:salety_market/Widgets/search_widget.dart';
 import 'package:salety_market/views/best_saller_page.dart';
 import '../Widgets/ShopByOffers/shop_by_offers_grid_view.dart';
 import '../Widgets/Shopping/cart_has_products.dart';
-import '../Widgets/best_seller/best_saller_card.dart';
 import '../Widgets/best_seller/best_saller_list_view.dart';
 import '../Widgets/category_home_list_view.dart';
 import '../Widgets/image_slider/Image_Slider.dart';
 import '../Widgets/rapidly_and_fresh/fresh_salles_card.dart';
 import '../Widgets/rapidly_and_fresh/product_list_view2.dart';
 import '../Widgets/sales/sales_list_view.dart';
-import '../db_helper.dart';
 import '../models/best_saller_model.dart';
-import '../models/cart_model.dart';
 import 'Category_Page.dart';
 
 
@@ -89,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                     OutlinedButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return CartHasProducts();
+                          return const CartHasProducts();
                         }));
                       },
                       style: ElevatedButton.styleFrom(
@@ -104,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                         label: Consumer<CartProvider>(
 
                             builder: (BuildContext context, value, Widget? child) {
-                              return Text(value.getCounter().toString(),style: TextStyle(color: Colors.white),);
+                              return Text(value.getCounter().toString(),style: const TextStyle(color: Colors.white),);
                             },
                              ),
 
@@ -302,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                   height: 10,
                 ),
               ),
-              BestSallerListView(),
+              const BestSallerListView(),
 
               const SliverToBoxAdapter(
                   child: SizedBox(

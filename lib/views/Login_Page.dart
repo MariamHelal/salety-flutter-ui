@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:salety_market/views/best_saller_page.dart';
-//import 'package:salety_market/views/Category_Page.dart';
-import 'package:salety_market/views/initial_page.dart';
 import 'package:salety_market/views/register_page.dart';
 
-//import 'Change_Password_Page.dart';
 import 'Check_Phone_Number_Page.dart';
 import 'Home_Page.dart';
 

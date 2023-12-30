@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:salety_market/Widgets/Shopping/shopping_card.dart';
-import 'package:salety_market/models/best_saller_model.dart';
 import 'package:salety_market/models/cart_model.dart';
 import '../../db_helper.dart';
 import '../../views/Category_Page.dart';
 import '../../views/Home_Page.dart';
 import '../Navigation_bar.dart';
 import 'cart_provider.dart';
-import 'total_order_info_card.dart';
 
 class CartHasProducts extends StatefulWidget {
   const CartHasProducts({super.key});
@@ -30,7 +28,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
             appBar: AppBar(
         backgroundColor: Colors.grey[200],
         elevation: 0,
-        title: Text('عربة التسوق',style: TextStyle(
+        title: const Text('عربة التسوق',style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
         ),),
@@ -42,15 +40,11 @@ class _CartHasProductsState extends State<CartHasProducts> {
                   MaterialPageRoute(builder: (context) {
                     return HomePage();
                   }));
-              // Navigator.pop(context);
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) {
-              //       return onBackReturnPage;
-              //     }));
+
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
-              side: BorderSide(
+              side: const BorderSide(
                 color: Colors.black38,
                 width: .5,
               ),
@@ -81,7 +75,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
                       Widget? child) {
                     return Text(
                       value.getCounter().toString(),
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     );
                   },
                 ),
@@ -137,7 +131,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
 
                                 child: MaterialButton(onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context){
-                                    return CategoryPage();
+                                    return const CategoryPage();
                                   }));
                                 },
                                   child: const Center(
@@ -149,7 +143,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 10,)
+                              const SizedBox(height: 10,)
                             ],
                           );
                         } else {
@@ -159,272 +153,264 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                 SliverGrid.builder(
                                   itemCount: snapShot.data!.length,
                                   itemBuilder: (context, index) {
-                                    return Container(
-                                      height: 150,
-                                      child: Card(
-                                        elevation: 5,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                            BorderRadius.circular(8),
-                                            color: Colors.white,
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: IconButton(
-                                                  onPressed: () {
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return AlertDialog(
-                                                          elevation: 5,
-                                                          title: const Text(
-                                                            'تأكيد الحذف ',
-                                                            style: TextStyle(),
-                                                          ),
-                                                          content: const Text(
-                                                              'هل انت متأكد من عملية الحذف'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                dbHelper!.delete(
-                                                                    snapShot
-                                                                        .data![
-                                                                    index]
-                                                                        .id!);
-                                                                cart.removeCounter();
-                                                                cart.removeTotalPrice(
-                                                                    double.parse(snapShot
-                                                                        .data![
-                                                                    index]
-                                                                        .totalPriceOfProduct
-                                                                        .toString()));
-                                                                Navigator.pop(
-                                                                    context,
-                                                                    'حذف');
-                                                              },
-                                                              child: const Text(
-                                                                  'حذف'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                Navigator.pop(
-                                                                    context,
-                                                                    'الغاء');
-                                                                //onTap();
-                                                              },
-                                                              child: const Text(
-                                                                  'الغاء'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
-                                                  },
-                                                  icon: Icon(Icons.delete),
+                                    return Slidable(
+                                      endActionPane: ActionPane(
+                                        motion: const StretchMotion(),
+                                        children: [
+                                          SlidableAction(
+                                            onPressed: ((context){
+                                            // delete
+                                            showDialog(context: context, builder: (context) {
+                                              return AlertDialog(
+                                                elevation: 5,
+                                                title: const Text('تأكيد الحذف ',
+                                                  style: TextStyle(),
                                                 ),
-                                              ),
-                                              Expanded(
-                                                flex: 7,
-                                                child: Padding(
-                                                  padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 10.0),
-                                                  child: Align(
-                                                    alignment:
-                                                    Alignment.centerRight,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Align(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          child: Text(
-                                                            snapShot.data![index]
-                                                                .productPrice
-                                                                .toString(),
-                                                            style:
-                                                            const TextStyle(
-                                                              color: Colors.green,
-                                                              fontSize: 15,
+                                                content: const Text(
+                                                    'هل انت متأكد من عملية الحذف'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      dbHelper!.delete(
+                                                          snapShot.data![index].id!);
+                                                      cart.removeCounter();
+                                                      cart.removeTotalPrice(double.parse((snapShot.data![index].totalPriceOfProduct).toString()));
+                                                      Navigator.pop(context, 'حذف');
+                                                    },
+                                                    child: const Text(
+                                                        'حذف'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(
+                                                          context,
+                                                          'الغاء');
+                                                      //onTap();
+                                                    },
+                                                    child: const Text(
+                                                        'الغاء'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                            );
+                                          }),
+                                            backgroundColor: Colors.red,
+                                            icon: Icons.delete,
+                                          ),
+                                        ],
+                                      ),
+                                      child: Container(
+                                        height: 150,
+                                        child: Card(
+                                          elevation: 5,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.circular(8),
+                                              color: Colors.white,
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  flex: 7,
+                                                  child: Padding(
+                                                    padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10.0),
+                                                    child: Align(
+                                                      alignment:
+                                                      Alignment.centerRight,
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          Align(
+                                                            alignment: Alignment
+                                                                .centerRight,
+                                                            child: Text(
+                                                              snapShot.data![index]
+                                                                  .productPrice
+                                                                  .toString(),
+                                                              style:
+                                                              const TextStyle(
+                                                                color: Colors.green,
+                                                                fontSize: 15,
+                                                              ),
+                                                              textAlign:
+                                                              TextAlign.right,
                                                             ),
-                                                            textAlign:
-                                                            TextAlign.right,
                                                           ),
-                                                        ),
-                                                        Align(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          child: Text(
-                                                            snapShot.data![index]
-                                                                .productName,
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .black87,
-                                                                fontSize: 17),
-                                                            textAlign:
-                                                            TextAlign.right,
-                                                          ),
-                                                        ),
-                                                        Align(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          child: Text(
-                                                            snapShot.data![index]
-                                                                .productQuantity,
-                                                            style: TextStyle(
-                                                              color: Colors.black,
-                                                              fontSize: 15,
+                                                          Align(
+                                                            alignment: Alignment
+                                                                .centerRight,
+                                                            child: Text(
+                                                              snapShot.data![index]
+                                                                  .productName,
+                                                              style: const TextStyle(
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  fontSize: 17),
+                                                              textAlign:
+                                                              TextAlign.right,
                                                             ),
-                                                            textAlign:
-                                                            TextAlign.right,
                                                           ),
-                                                        )
-                                                      ],
+                                                          Align(
+                                                            alignment: Alignment
+                                                                .centerRight,
+                                                            child: Text(
+                                                              snapShot.data![index]
+                                                                  .productQuantity,
+                                                              style: const TextStyle(
+                                                                color: Colors.black,
+                                                                fontSize: 15,
+                                                              ),
+                                                              textAlign:
+                                                              TextAlign.right,
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                              const Expanded(
-                                                  child: SizedBox(
-                                                    width: 40,
-                                                  )),
-                                              Expanded(
-                                                child: Column(
-                                                  children: [
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        int quantity = snapShot
-                                                            .data![index]
-                                                            .numbersOfProduct;
-                                                        double price = snapShot
-                                                            .data![index]
-                                                            .productPrice;
-                                                        quantity++;
-                                                        double? newPrice =
-                                                            price * quantity;
+                                                const Expanded(
+                                                    child: SizedBox(
+                                                      width: 40,
+                                                    )),
+                                                Expanded(
+                                                  child: Column(
+                                                    children: [
+                                                      IconButton(
+                                                        onPressed: () {
+                                                          int quantity = snapShot
+                                                              .data![index]
+                                                              .numbersOfProduct;
+                                                          double price = snapShot
+                                                              .data![index]
+                                                              .productPrice;
+                                                          quantity++;
+                                                          double? newPrice =
+                                                              price * quantity;
 
-                                                        dbHelper!
-                                                            .updateNumbersOfProduct(CartModel(
-                                                            id: snapShot
-                                                                .data![index]
-                                                                .id,
-                                                            productId: snapShot
-                                                                .data![index]
-                                                                .id
-                                                                .toString(),
-                                                            numbersOfProduct:
-                                                            quantity,
-                                                            image: snapShot
-                                                                .data![index]
-                                                                .image
-                                                                .toString(),
-                                                            productName: snapShot
-                                                                .data![index]
-                                                                .productName,
-                                                            productQuantity:
-                                                            snapShot
-                                                                .data![
-                                                            index]
-                                                                .productQuantity
-                                                                .toString(),
-                                                            productPrice: snapShot
-                                                                .data![index]
-                                                                .productPrice,
-                                                            totalPriceOfProduct:
-                                                            newPrice))
-                                                            .then((value) {
-                                                          newPrice = 0;
-                                                          quantity = 0;
-                                                          cart.addTotalPrice(
-                                                              double.parse(snapShot
-                                                                  .data![index]
-                                                                  .productPrice
-                                                                  .toString()));
-                                                        }).onError((error,
-                                                            stackTrace) {
-                                                          print(error.toString());
-                                                        });
-                                                      },
-                                                      icon: const Icon(Icons.add),
-                                                      iconSize: 15,
-                                                    ),
-                                                    Text(
-                                                      snapShot.data![index]
-                                                          .numbersOfProduct
-                                                          .toString(),
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                          FontWeight.w700,
-                                                          fontSize: 15),
-                                                    ),
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        int quantity = snapShot
-                                                            .data![index]
-                                                            .numbersOfProduct;
-                                                        double price = snapShot
-                                                            .data![index]
-                                                            .productPrice;
-                                                        quantity--;
-                                                        double? newPrice =
-                                                            price * quantity;
-                                                        if (quantity > 0) {
                                                           dbHelper!
-                                                              .updateNumbersOfProduct(
-                                                              CartModel(
-                                                                numbersOfProduct:
-                                                                quantity,
-                                                                image: snapShot
-                                                                    .data![index]
-                                                                    .image
-                                                                    .toString(),
-                                                                productName: snapShot
-                                                                    .data![index]
-                                                                    .productName,
-                                                                productQuantity:
-                                                                snapShot
-                                                                    .data![index]
-                                                                    .productQuantity
-                                                                    .toString(),
-                                                                productPrice: snapShot
-                                                                    .data![index]
-                                                                    .productPrice,
-                                                                totalPriceOfProduct:
-                                                                newPrice,
-                                                                id: snapShot
-                                                                    .data![index].id,
-                                                                productId: snapShot
-                                                                    .data![index].id
-                                                                    .toString(),
-                                                              ))
+                                                              .updateNumbersOfProduct(CartModel(
+                                                              id: snapShot
+                                                                  .data![index]
+                                                                  .id,
+                                                              productId: snapShot
+                                                                  .data![index]
+                                                                  .id
+                                                                  .toString(),
+                                                              numbersOfProduct:
+                                                              quantity,
+                                                              image: snapShot
+                                                                  .data![index]
+                                                                  .image
+                                                                  .toString(),
+                                                              productName: snapShot
+                                                                  .data![index]
+                                                                  .productName,
+                                                              productQuantity:
+                                                              snapShot
+                                                                  .data![
+                                                              index]
+                                                                  .productQuantity
+                                                                  .toString(),
+                                                              productPrice: snapShot
+                                                                  .data![index]
+                                                                  .productPrice,
+                                                              totalPriceOfProduct:
+                                                              newPrice))
                                                               .then((value) {
                                                             newPrice = 0;
                                                             quantity = 0;
-                                                            cart.removeTotalPrice(
+                                                            cart.addTotalPrice(
                                                                 double.parse(snapShot
                                                                     .data![index]
                                                                     .productPrice
                                                                     .toString()));
                                                           }).onError((error,
                                                               stackTrace) {
-                                                            print(
-                                                                error.toString());
+                                                            print(error.toString());
                                                           });
-                                                        }
-                                                      },
-                                                      icon: const Icon(
-                                                        Icons.remove,
+                                                        },
+                                                        icon: const Icon(Icons.add),
+                                                        iconSize: 15,
                                                       ),
-                                                      iconSize: 15,
-                                                    ),
-                                                  ],
-                                                ),
-                                              )
-                                            ],
+                                                      Text(
+                                                        snapShot.data![index]
+                                                            .numbersOfProduct
+                                                            .toString(),
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                            FontWeight.w700,
+                                                            fontSize: 15),
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () {
+                                                          int quantity = snapShot
+                                                              .data![index]
+                                                              .numbersOfProduct;
+                                                          double price = snapShot
+                                                              .data![index]
+                                                              .productPrice;
+                                                          quantity--;
+                                                          double? newPrice =
+                                                              price * quantity;
+                                                          if (quantity > 0) {
+                                                            dbHelper!
+                                                                .updateNumbersOfProduct(
+                                                                CartModel(
+                                                                  numbersOfProduct:
+                                                                  quantity,
+                                                                  image: snapShot
+                                                                      .data![index]
+                                                                      .image
+                                                                      .toString(),
+                                                                  productName: snapShot
+                                                                      .data![index]
+                                                                      .productName,
+                                                                  productQuantity:
+                                                                  snapShot
+                                                                      .data![index]
+                                                                      .productQuantity
+                                                                      .toString(),
+                                                                  productPrice: snapShot
+                                                                      .data![index]
+                                                                      .productPrice,
+                                                                  totalPriceOfProduct:
+                                                                  newPrice,
+                                                                  id: snapShot
+                                                                      .data![index].id,
+                                                                  productId: snapShot
+                                                                      .data![index].id
+                                                                      .toString(),
+                                                                ))
+                                                                .then((value) {
+                                                              newPrice = 0;
+                                                              quantity = 0;
+                                                              cart.removeTotalPrice(
+                                                                  double.parse(snapShot
+                                                                      .data![index]
+                                                                      .productPrice
+                                                                      .toString()));
+                                                            }).onError((error,
+                                                                stackTrace) {
+                                                              print(
+                                                                  error.toString());
+                                                            });
+                                                          }
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons.remove,
+                                                        ),
+                                                        iconSize: 15,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -435,12 +421,12 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                       crossAxisCount: 1,
                                       childAspectRatio: 1 / .35),
                                 ),
-                                SliverToBoxAdapter(child: SizedBox(height: 10,)),
+                                const SliverToBoxAdapter(child: SizedBox(height: 10,)),
                                 SliverToBoxAdapter(
                                   child: Column(
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.all(16),
+                                        padding: const EdgeInsets.all(16),
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(8),
                                             color: Colors.white
@@ -449,7 +435,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                           children: [
                                             ReusableWidget(title: 'المجموع الفرعي', value: r'$' +cart.getTotalPrice().toStringAsFixed(2)),
                                             ReusableWidget(title: 'رسوم التوصيل', value: r'$' +'20'),
-                                            Divider(
+                                            const Divider(
                                               color: Colors.black54,
                                             ),
                                             ReusableWidget(title: 'المجموع الفرعي', value: r'$' +cart.getTotalPrice().toStringAsFixed(2)),
@@ -457,7 +443,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       Container(
@@ -488,9 +474,9 @@ class _CartHasProductsState extends State<CartHasProducts> {
                           );
                         }
                       } else if (snapShot.hasError) {
-                        return Text('try later app has error');
+                        return const Text('try later app has error');
                       }
-                      return Text('');
+                      return const Text('');
                       //return Text('');
                     }
                 ),
@@ -503,7 +489,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
             appBar: AppBar(
         backgroundColor: Colors.grey[200],
         elevation: 0,
-        title: Text('عربة التسوق',style: TextStyle(
+        title: const Text('عربة التسوق',style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
         ),),
@@ -523,7 +509,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
-              side: BorderSide(
+              side: const BorderSide(
                 color: Colors.black38,
                 width: .5,
               ),
@@ -554,7 +540,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
                       Widget? child) {
                     return Text(
                       value.getCounter().toString(),
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     );
                   },
                 ),
@@ -608,7 +594,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
 
                                 child: MaterialButton(onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context){
-                                    return CategoryPage();
+                                    return const CategoryPage();
                                   }));
                                 },
                                   child: const Center(
@@ -620,7 +606,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 10,)
+                              const SizedBox(height: 10,)
 
                             ],
                           );
@@ -630,267 +616,266 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                 SliverGrid.builder(
                                   itemCount: snapShot.data!.length,
                                   itemBuilder: (context, index) {
-                                    return Container(
-                                      height: 150,
-                                      child: Card(
-                                        elevation: 5,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                            BorderRadius.circular(8),
-                                            color: Colors.white,
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: IconButton(
-                                                  onPressed: () {
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return AlertDialog(
-                                                          elevation: 5,
-                                                          title: const Text(
-                                                            'تأكيد الحذف ',
-                                                            style: TextStyle(),
-                                                          ),
-                                                          content: const Text(
-                                                              'هل انت متأكد من عملية الحذف'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                dbHelper!.delete(
-                                                                    snapShot
-                                                                        .data![
-                                                                    index]
-                                                                        .id!);
-                                                                cart.removeCounter();
-                                                                cart.removeTotalPrice(double.parse((snapShot.data![index].productPrice).toString()));
-                                                                Navigator.pop(
-                                                                    context,
-                                                                    'حذف');
-                                                              },
-                                                              child: const Text(
-                                                                  'حذف'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                Navigator.pop(
-                                                                    context,
-                                                                    'الغاء');
-                                                                //onTap();
-                                                              },
-                                                              child: const Text(
-                                                                  'الغاء'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
-                                                  },
-                                                  icon: Icon(Icons.delete),
+                                    return Slidable(
+                                      endActionPane: ActionPane(
+                                        motion: const StretchMotion(),
+                                        children: [
+                                          SlidableAction(onPressed:
+                                          ((context){
+                                            // delete
+                                            showDialog(context: context, builder: (context) {
+                                              return AlertDialog(
+                                                elevation: 5,
+                                                title: const Text('تأكيد الحذف ',
+                                                  style: TextStyle(),
                                                 ),
-                                              ),
-                                              Expanded(
-                                                flex: 7,
-                                                child: Padding(
-                                                  padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 10.0),
-                                                  child: Align(
-                                                    alignment:
-                                                    Alignment.centerRight,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Align(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          child: Text(
-                                                            snapShot.data![index]
-                                                                .productPrice
-                                                                .toString(),
-                                                            style:
-                                                            const TextStyle(
-                                                              color: Colors.green,
-                                                              fontSize: 15,
+                                                content: const Text(
+                                                    'هل انت متأكد من عملية الحذف'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      dbHelper!.delete(
+                                                          snapShot.data![index].id!);
+                                                      cart.removeCounter();
+                                                      cart.removeTotalPrice(double.parse((snapShot.data![index].totalPriceOfProduct).toString()));
+                                                      Navigator.pop(context, 'حذف');
+                                                    },
+                                                    child: const Text(
+                                                        'حذف'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(
+                                                          context,
+                                                          'الغاء');
+                                                      //onTap();
+                                                    },
+                                                    child: const Text(
+                                                        'الغاء'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                            );
+                                          }),
+                                          backgroundColor: Colors.red,
+                                          icon: Icons.delete,
+                                          ),
+                                        ],
+                                      ),
+                                      child: Container(
+                                        height: 150,
+                                        child: Card(
+                                          elevation: 5,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.circular(8),
+                                              color: Colors.white,
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  flex: 7,
+                                                  child: Padding(
+                                                    padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10.0),
+                                                    child: Align(
+                                                      alignment:
+                                                      Alignment.centerRight,
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Align(
+                                                            alignment: Alignment
+                                                                .centerRight,
+                                                            child: Text(
+                                                              snapShot.data![index]
+                                                                  .productPrice
+                                                                  .toString(),
+                                                              style:
+                                                              const TextStyle(
+                                                                color: Colors.green,
+                                                                fontSize: 15,
+                                                              ),
+                                                              textAlign:
+                                                              TextAlign.right,
                                                             ),
-                                                            textAlign:
-                                                            TextAlign.right,
                                                           ),
-                                                        ),
-                                                        Align(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          child: Text(
-                                                            snapShot.data![index]
-                                                                .productName,
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .black87,
-                                                                fontSize: 17),
-                                                            textAlign:
-                                                            TextAlign.right,
-                                                          ),
-                                                        ),
-                                                        Align(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          child: Text(
-                                                            snapShot.data![index]
-                                                                .productQuantity,
-                                                            style: TextStyle(
-                                                              color: Colors.black,
-                                                              fontSize: 15,
+                                                          Align(
+                                                            alignment: Alignment
+                                                                .centerRight,
+                                                            child: Text(
+                                                              snapShot.data![index]
+                                                                  .productName,
+                                                              style: const TextStyle(
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  fontSize: 17),
+                                                              textAlign:
+                                                              TextAlign.right,
                                                             ),
-                                                            textAlign:
-                                                            TextAlign.right,
                                                           ),
-                                                        )
-                                                      ],
+                                                          Align(
+                                                            alignment: Alignment
+                                                                .centerRight,
+                                                            child: Text(
+                                                              snapShot.data![index]
+                                                                  .productQuantity,
+                                                              style: const TextStyle(
+                                                                color: Colors.black,
+                                                                fontSize: 15,
+                                                              ),
+                                                              textAlign:
+                                                              TextAlign.right,
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                              const Expanded(
-                                                  child: SizedBox(
-                                                    width: 40,
-                                                  )),
-                                              Expanded(
-                                                child: Column(
-                                                  children: [
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        int quantity = snapShot
-                                                            .data![index]
-                                                            .numbersOfProduct;
-                                                        double price = snapShot
-                                                            .data![index]
-                                                            .productPrice;
-                                                        quantity++;
-                                                        double? newPrice =
-                                                            price * quantity;
+                                                const Expanded(
+                                                    child: SizedBox(
+                                                      width: 40,
+                                                    )),
+                                                Expanded(
+                                                  child: Column(
+                                                    children: [
+                                                      IconButton(
+                                                        onPressed: () {
+                                                          int quantity = snapShot
+                                                              .data![index]
+                                                              .numbersOfProduct;
+                                                          double price = snapShot
+                                                              .data![index]
+                                                              .productPrice;
+                                                          quantity++;
+                                                          double? newPrice =
+                                                              price * quantity;
 
-                                                        dbHelper!
-                                                            .updateNumbersOfProduct(CartModel(
-                                                            id: snapShot
-                                                                .data![index]
-                                                                .id,
-                                                            productId: snapShot
-                                                                .data![index]
-                                                                .id
-                                                                .toString(),
-                                                            numbersOfProduct:
-                                                            quantity,
-                                                            image: snapShot
-                                                                .data![index]
-                                                                .image
-                                                                .toString(),
-                                                            productName: snapShot
-                                                                .data![index]
-                                                                .productName,
-                                                            productQuantity:
-                                                            snapShot
-                                                                .data![
-                                                            index]
-                                                                .productQuantity
-                                                                .toString(),
-                                                            productPrice: snapShot
-                                                                .data![index]
-                                                                .productPrice,
-                                                            totalPriceOfProduct:
-                                                            newPrice))
-                                                            .then((value) {
-                                                          newPrice = 0;
-                                                          quantity = 0;
-                                                          cart.addTotalPrice(
-                                                              double.parse(snapShot
-                                                                  .data![index]
-                                                                  .productPrice
-                                                                  .toString()));
-                                                        }).onError((error,
-                                                            stackTrace) {
-                                                          print(error.toString());
-                                                        });
-                                                      },
-                                                      icon: const Icon(Icons.add),
-                                                      iconSize: 15,
-                                                    ),
-                                                    Text(
-                                                      snapShot.data![index]
-                                                          .numbersOfProduct
-                                                          .toString(),
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                          FontWeight.w700,
-                                                          fontSize: 15),
-                                                    ),
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        int quantity = snapShot
-                                                            .data![index]
-                                                            .numbersOfProduct;
-                                                        double price = snapShot
-                                                            .data![index]
-                                                            .productPrice;
-                                                        quantity--;
-                                                        double? newPrice =
-                                                            price * quantity;
-                                                        if (quantity > 0) {
                                                           dbHelper!
-                                                              .updateNumbersOfProduct(
-                                                              CartModel(
-                                                                numbersOfProduct:
-                                                                quantity,
-                                                                image: snapShot
-                                                                    .data![index]
-                                                                    .image
-                                                                    .toString(),
-                                                                productName: snapShot
-                                                                    .data![index]
-                                                                    .productName,
-                                                                productQuantity:
-                                                                snapShot
-                                                                    .data![index]
-                                                                    .productQuantity
-                                                                    .toString(),
-                                                                productPrice: snapShot
-                                                                    .data![index]
-                                                                    .productPrice,
-                                                                totalPriceOfProduct:
-                                                                newPrice,
-                                                                id: snapShot
-                                                                    .data![index].id,
-                                                                productId: snapShot
-                                                                    .data![index].id
-                                                                    .toString(),
-                                                              ))
+                                                              .updateNumbersOfProduct(CartModel(
+                                                              id: snapShot
+                                                                  .data![index]
+                                                                  .id,
+                                                              productId: snapShot
+                                                                  .data![index]
+                                                                  .id
+                                                                  .toString(),
+                                                              numbersOfProduct:
+                                                              quantity,
+                                                              image: snapShot
+                                                                  .data![index]
+                                                                  .image
+                                                                  .toString(),
+                                                              productName: snapShot
+                                                                  .data![index]
+                                                                  .productName,
+                                                              productQuantity:
+                                                              snapShot
+                                                                  .data![
+                                                              index]
+                                                                  .productQuantity
+                                                                  .toString(),
+                                                              productPrice: snapShot
+                                                                  .data![index]
+                                                                  .productPrice,
+                                                              totalPriceOfProduct:
+                                                              newPrice))
                                                               .then((value) {
                                                             newPrice = 0;
                                                             quantity = 0;
-                                                            cart.removeTotalPrice(
+                                                            cart.addTotalPrice(
                                                                 double.parse(snapShot
                                                                     .data![index]
                                                                     .productPrice
                                                                     .toString()));
                                                           }).onError((error,
                                                               stackTrace) {
-                                                            print(
-                                                                error.toString());
+                                                            print(error.toString());
                                                           });
-                                                        }
-                                                      },
-                                                      icon: const Icon(
-                                                        Icons.remove,
+                                                        },
+                                                        icon: const Icon(Icons.add),
+                                                        iconSize: 15,
                                                       ),
-                                                      iconSize: 15,
-                                                    ),
-                                                  ],
-                                                ),
-                                              )
-                                            ],
+                                                      Text(
+                                                        snapShot.data![index]
+                                                            .numbersOfProduct
+                                                            .toString(),
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                            FontWeight.w700,
+                                                            fontSize: 15),
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () {
+                                                          int quantity = snapShot
+                                                              .data![index]
+                                                              .numbersOfProduct;
+                                                          double price = snapShot
+                                                              .data![index]
+                                                              .productPrice;
+                                                          quantity--;
+                                                          double? newPrice =
+                                                              price * quantity;
+                                                          if (quantity > 0) {
+                                                            dbHelper!
+                                                                .updateNumbersOfProduct(
+                                                                CartModel(
+                                                                  numbersOfProduct:
+                                                                  quantity,
+                                                                  image: snapShot
+                                                                      .data![index]
+                                                                      .image
+                                                                      .toString(),
+                                                                  productName: snapShot
+                                                                      .data![index]
+                                                                      .productName,
+                                                                  productQuantity:
+                                                                  snapShot
+                                                                      .data![index]
+                                                                      .productQuantity
+                                                                      .toString(),
+                                                                  productPrice: snapShot
+                                                                      .data![index]
+                                                                      .productPrice,
+                                                                  totalPriceOfProduct:
+                                                                  newPrice,
+                                                                  id: snapShot
+                                                                      .data![index].id,
+                                                                  productId: snapShot
+                                                                      .data![index].id
+                                                                      .toString(),
+                                                                ))
+                                                                .then((value) {
+                                                              newPrice = 0;
+                                                              quantity = 0;
+                                                              cart.removeTotalPrice(
+                                                                  double.parse(snapShot
+                                                                      .data![index]
+                                                                      .productPrice
+                                                                      .toString()));
+                                                            }).onError((error,
+                                                                stackTrace) {
+                                                              print(
+                                                                  error.toString());
+                                                            });
+                                                          }
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons.remove,
+                                                        ),
+                                                        iconSize: 15,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -901,12 +886,12 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                       crossAxisCount: 2,
                                       childAspectRatio: 1 / .35),
                                 ),
-                                SliverToBoxAdapter(child: SizedBox(height: 10,),),
+                                const SliverToBoxAdapter(child: SizedBox(height: 10,),),
                                 SliverToBoxAdapter(
                                   child: Column(
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.all(16),
+                                        padding: const EdgeInsets.all(16),
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(8),
                                             color: Colors.white),
@@ -921,7 +906,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                             ReusableWidget(
                                                 title: 'رسوم التوصيل',
                                                 value: r'$' + '20'),
-                                            Divider(
+                                            const Divider(
                                               color: Colors.black54,
                                             ),
                                             ReusableWidget(
@@ -933,7 +918,7 @@ class _CartHasProductsState extends State<CartHasProducts> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       Container(
@@ -964,9 +949,9 @@ class _CartHasProductsState extends State<CartHasProducts> {
                           );
                         }
                       } else if (snapShot.hasError) {
-                        return Center(child: Text('try later app has error'));
+                        return const Center(child: Text('try later app has error'));
                       }
-                      return Text('');
+                      return const Text('');
                       //return Text('');
                     }),
               ),

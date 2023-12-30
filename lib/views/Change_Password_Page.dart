@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'Login_Page.dart';
-
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});
 
@@ -12,7 +10,7 @@ class ChangePasswordPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('تغيير كلمة المرور',style: TextStyle(
+        title: const Text('تغيير كلمة المرور',style: TextStyle(
           color: Colors.black,fontWeight: FontWeight.w500
         ),),
         centerTitle: true,

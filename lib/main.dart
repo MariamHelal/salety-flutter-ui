@@ -6,11 +6,6 @@ import 'package:salety_market/views/initial_page.dart';
 
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitDown,
-  //   DeviceOrientation.portraitUp,
-  // ]);
   runApp(const SelatyApp());
 }
 
@@ -22,7 +17,7 @@ class SelatyApp extends StatelessWidget {
     return  ChangeNotifierProvider(
       create:  (_)=> CartProvider(),
       child: Builder(builder: (BuildContext context){
-        return MaterialApp(
+        return const MaterialApp(
           debugShowCheckedModeBanner: false,
           home: InitialPage(),
         );

@@ -59,20 +59,16 @@ class _FilterDialogState extends State<FilterDialog> {
        shrinkWrap: true,
        physics: NeverScrollableScrollPhysics(),
        itemCount: filterList.length,
-// mainAxisAlignment: MainAxisAlignment.center,
-// mainAxisSize: MainAxisSize.min,
+
        itemBuilder: (BuildContext context, int index) {
          return RadioListTile(
 
            value: filterList[index],
            groupValue: selectedRadioTile,
            title: Text(filterList[index]),
-//subtitle: Text("Radio 1 Subtitle"),
            onChanged: (value) {
-//value=filterList[index];
              print("Radio Tile pressed $value");
              setSelectedRadioTile('$value');
-// print('$value');
              isSelected=true;
              filterCategory=value;
 
@@ -90,20 +86,15 @@ class _FilterDialogState extends State<FilterDialog> {
        shrinkWrap: true,
        physics: NeverScrollableScrollPhysics(),
        itemCount: filterList.length,
-// mainAxisAlignment: MainAxisAlignment.center,
-// mainAxisSize: MainAxisSize.min,
        itemBuilder: (BuildContext context, int index) {
          return RadioListTile(
 
            value: filterList[index],
            groupValue: selectedRadioTile,
            title: Text(filterList[index]),
-//subtitle: Text("Radio 1 Subtitle"),
            onChanged: (value) {
-//value=filterList[index];
              print("Radio Tile pressed $value");
              setSelectedRadioTile('$value');
-// print('$value');
              isSelected=true;
              filterCategory=value;
 

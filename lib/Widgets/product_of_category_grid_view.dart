@@ -5,8 +5,6 @@ import '../db_helper.dart';
 import '../models/best_saller_model.dart';
 import '../models/cart_model.dart';
 import 'Shopping/cart_provider.dart';
-import 'Shopping/shopping_card.dart';
-import 'best_seller/best_sales_grid_view_page.dart';
 import 'best_seller/best_saller_card.dart';
 
 class ProductsOfCategoryGridView extends StatelessWidget {
@@ -31,10 +29,6 @@ class ProductsOfCategoryGridView extends StatelessWidget {
     final orientationDevice = MediaQuery.of(context).orientation;
     return  orientationDevice == Orientation.portrait
         ? SliverGrid.builder(
-      // shrinkWrap: true,
-      // physics: NeverScrollableScrollPhysics(),
-      // physics: const BouncingScrollPhysics(),
-      // scrollDirection: Axis.horizontal,
       itemCount: products.length,
       itemBuilder: (context, index) {
         return BestSallerCard(
@@ -68,10 +62,7 @@ class ProductsOfCategoryGridView extends StatelessWidget {
           childAspectRatio: 1 / 1.6),
     )
         : SliverGrid.builder(
-      // shrinkWrap: true,
-      // physics: NeverScrollableScrollPhysics(),
-      // physics: const BouncingScrollPhysics(),
-      // scrollDirection: Axis.horizontal,
+
       itemCount: products.length,
       itemBuilder: (context, index) {
         return Padding(

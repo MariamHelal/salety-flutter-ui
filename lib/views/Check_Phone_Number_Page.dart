@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:salety_market/views/Change_Password_Page.dart';
 
-
-import 'Login_Page.dart';
-
 class CheckPhoneNumberPage extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController controller = TextEditingController();
@@ -17,7 +14,7 @@ class CheckPhoneNumberPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('تحقق من رقم الهاتف',style: TextStyle(
+        title: const Text('تحقق من رقم الهاتف',style: TextStyle(
         color: Colors.black,fontWeight: FontWeight.w500),),
         centerTitle: true,
         leading:  Center(
@@ -47,59 +44,7 @@ class CheckPhoneNumberPage extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: ListView(
             children: [
-              // Row(
-              //   children: [
-              //     OutlinedButton(
-              //       onPressed: () {
-              //         Navigator.push(context,
-              //             MaterialPageRoute(builder: (context) {
-              //           return LoginPage();
-              //         }));
-              //       },
-              //       style: ElevatedButton.styleFrom(
-              //         backgroundColor: Colors.white,
-              //         // side: BorderSide(
-              //         //   color: Colors.black38,
-              //         //   width: .5,
-              //         // ),
-              //         // fixedSize: Size(10, 30),
-              //       ),
-              //       child: const Icon(
-              //         Icons.arrow_back_ios_new_rounded,
-              //         color: Colors.black,
-              //       ),
-              //     ),
-              //     const Spacer(
-              //       flex: 4,
-              //     ),
-              //     const Center(
-              //       child: Text(
-              //         'تحقق من رقم الهاتف',
-              //         style: TextStyle(
-              //           fontSize: 20,
-              //         ),
-              //       ),
-              //     ),
-              //     const Spacer(
-              //       flex: 1,
-              //     ),
-              //     OutlinedButton(
-              //       onPressed: () {},
-              //       style: ElevatedButton.styleFrom(
-              //         backgroundColor: Colors.white,
-              //         side: const BorderSide(
-              //           color: Colors.black38,
-              //           width: .5,
-              //         ),
-              //         // fixedSize: Size(10, 30),
-              //       ),
-              //       child: const Icon(
-              //         Icons.local_mall_outlined,
-              //         color: Colors.black,
-              //       ),
-              //     ),
-              //   ],
-              // ),
+
               SizedBox(
                 height: MediaQuery.of(context).size.height / 50,
               ),

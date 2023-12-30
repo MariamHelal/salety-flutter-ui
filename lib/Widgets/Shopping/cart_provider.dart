@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:salety_market/db_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../models/best_saller_model.dart';
 import '../../models/cart_model.dart';
 
 class CartProvider with ChangeNotifier{

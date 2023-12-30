@@ -3,8 +3,7 @@ import 'package:salety_market/models/sales_model.dart';
 
 class SalesCard extends StatelessWidget {
   const SalesCard({super.key, required this.sales, required this.widthOfSalesCard, required this.heightOfSalesCard,});
-  // final double salesCardWidth;
-  // final double salesCardheight;
+
   final SalesModel sales;
   final double widthOfSalesCard;
   final double heightOfSalesCard;

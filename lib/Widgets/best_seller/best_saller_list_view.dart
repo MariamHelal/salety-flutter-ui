@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:salety_market/Widgets/best_seller/best_saller_card.dart';
 
@@ -79,20 +80,20 @@ class _BestSallerListViewState extends State<BestSallerListView> {
           ),
         );
       },
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 7,
-        mainAxisSpacing: 7,
-        childAspectRatio: 1 / 1.56,
+        // crossAxisSpacing: 5,
+        // mainAxisSpacing: 5,
+        childAspectRatio: 1.w / 1.4.h,
       ),
     )
         : SliverGrid.builder(
             itemCount: products.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
                 crossAxisSpacing: 7,
                 mainAxisSpacing: 7,
-                childAspectRatio: 1 / 1.41),
+                childAspectRatio: 1.h / .59.w),
             itemBuilder: (BuildContext context, int index) {
               return BestSallerCard(
                 product: products[index],

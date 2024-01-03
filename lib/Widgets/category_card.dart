@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../models/category_model.dart';
 import '../views/product_of_category_page.dart';
@@ -18,7 +19,7 @@ class CategoeryCard extends StatelessWidget {
         }));
       },
       child: Padding(
-        padding:  const EdgeInsets.only(bottom: 8.0),
+        padding:   EdgeInsets.only(bottom: 8.0),
         child: Card(
           elevation: 5,
           child: Container(
@@ -32,7 +33,7 @@ class CategoeryCard extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 25.0),
+                  padding:  EdgeInsets.only(top: 30.0),
                   child: Text(
                     category.CategoryName,
                     style:  TextStyle(
@@ -50,7 +51,7 @@ class CategoeryCard extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 30),
+                        padding:  EdgeInsets.only(top: 20),
                         child: Image.asset(
                           category.Image1Name ,
                           fit: BoxFit.cover,

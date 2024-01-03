@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salety_market/models/shop_by_offers_model.dart';
 
 class ShopByOffersCard extends StatelessWidget {
@@ -11,7 +12,7 @@ class ShopByOffersCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         color: shopByOffer.color,
       ),
-      height: 120,
+      height: 120.h,
       width: MediaQuery.of(context).size.width / 4,
       child: Padding(
         padding: const EdgeInsets.all(16.0),

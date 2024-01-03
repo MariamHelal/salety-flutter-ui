@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salety_market/views/register_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'Check_Phone_Number_Page.dart';
 import 'Home_Page.dart';
@@ -68,19 +70,19 @@ class LoginPage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 20,
                       ),
                       Column(
-                        children: const [
+                        children:  [
                           Text(
                             'سلتي',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                              fontSize: 30.sp,
                               color: Colors.red,
                             ),
                           ),
                           Text(
                             'S E L A T Y',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 30),
+                                fontWeight: FontWeight.bold, fontSize: 30.sp),
                           ),
                         ],
                       ),
@@ -109,8 +111,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: 20.h,
                   ),
                   TextFormField(
                     controller: passController,
@@ -163,11 +165,11 @@ class LoginPage extends StatelessWidget {
                       print(emailController.text);
                       print(passController.text);
                     },
-                    child: const Center(
+                    child:  Center(
                       child: Text(
                         'تسجيل الدخول',
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20.sp,
                           color: Colors.white,
                         ),
                       ),
@@ -188,7 +190,7 @@ class LoginPage extends StatelessWidget {
                           }));
                         },
                         child: Row(
-                          children: const [
+                          children:  [
                             Text(
                               'انشاء حساب',
                               style: TextStyle(
@@ -198,7 +200,7 @@ class LoginPage extends StatelessWidget {
                             ),
                             Icon(
                               Icons.play_arrow_rounded,
-                              size: 25,
+                              size: 25.sp,
                               color: Colors.black,
                             ),
                           ],

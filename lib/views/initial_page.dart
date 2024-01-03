@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salety_market/views/Login_Page.dart';
 import 'package:salety_market/views/register_page.dart';
 
@@ -28,19 +29,19 @@ class InitialPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width /20,
                 ),
                 Column(
-                  children: const [
+                  children:  [
                     Text(
                       'سلتي',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 40,
+                        fontSize: 30.sp,
                         color: Colors.red,
                       ),
                     ),
                     Text(
                       'S E L A T Y',
                       style: TextStyle(fontWeight: FontWeight.bold,
-                          fontSize: 40),
+                          fontSize: 30.sp),
                     ),
                   ],
                 ),
@@ -60,18 +61,18 @@ class InitialPage extends StatelessWidget {
                 }));
                 print('تسجيل الدخول');
               },
-              child: const Center(
+              child:  Center(
                 child: Text(
                   'تسجيل الدخول',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 25.sp,
                     color: Colors.white,
                   ),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -83,11 +84,11 @@ class InitialPage extends StatelessWidget {
                 }));
                 print('انشئ حساب ');
               },
-              child: const Center(
+              child:  Center(
                 child: Text(
                   ' انشئ حساب',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 25.sp,
                     color: Colors.white,
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../db_helper.dart';
@@ -31,35 +32,38 @@ class ProductsOfCategoryGridView extends StatelessWidget {
         ? SliverGrid.builder(
       itemCount: products.length,
       itemBuilder: (context, index) {
-        return BestSallerCard(
-          product: products[index],
-          OnTap: (){
-            dbHelper!.insert(
-                CartModel(
-                  numbersOfProduct: 1,
-                  image: products[index].image,
-                  productName: products[index].productName,
-                  productQuantity: products[index].productQuantity,
-                  productPrice: products[index].productPrice,
-                  totalPriceOfProduct: products[index].productPrice,
-                  id: products[index].id,
-                  productId: products[index].productName.toString(),
-                )
-            ).then((value) {
-              print('product is added to cart');
-              cart.addTotalPrice(double.parse(products[index].productPrice.toString()));
-              cart.addCounter();
-            }).onError((error, stackTrace) {
-              print(error.toString());
-            });
-        },
+        return Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: BestSallerCard(
+            product: products[index],
+            OnTap: (){
+              dbHelper!.insert(
+                  CartModel(
+                    numbersOfProduct: 1,
+                    image: products[index].image,
+                    productName: products[index].productName,
+                    productQuantity: products[index].productQuantity,
+                    productPrice: products[index].productPrice,
+                    totalPriceOfProduct: products[index].productPrice,
+                    id: products[index].id,
+                    productId: products[index].productName.toString(),
+                  )
+              ).then((value) {
+                print('product is added to cart');
+                cart.addTotalPrice(double.parse(products[index].productPrice.toString()));
+                cart.addCounter();
+              }).onError((error, stackTrace) {
+                print(error.toString());
+              });
+          },
+          ),
         );
       },
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 7,
           mainAxisSpacing: 7,
-          childAspectRatio: 1 / 1.6),
+          childAspectRatio: 1.w / 1.45.h),
     )
         : SliverGrid.builder(
 
@@ -93,10 +97,10 @@ class ProductsOfCategoryGridView extends StatelessWidget {
           ),
         );
       },
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
           crossAxisSpacing: 7,
           mainAxisSpacing: 7,
-          childAspectRatio: 1 / 1.43),
+          childAspectRatio: 1.h / .6.w),
     );  }
 }

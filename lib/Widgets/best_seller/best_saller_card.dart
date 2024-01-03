@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 import '../../models/best_saller_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BestSallerCard extends StatefulWidget {
   BestSallerCard({super.key, required this.product, required this.OnTap});
@@ -28,8 +29,8 @@ class _BestSallerCardState extends State<BestSallerCard> {
     return Card(
       elevation: 8,
       child: Container(
-        height: 300,
-        width: 165,
+        height: 250.h,
+        width: 150.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,
@@ -80,11 +81,11 @@ class _BestSallerCardState extends State<BestSallerCard> {
                           topLeft: Radius.circular(20),
                           bottomLeft: Radius.circular(20)),
                       color: Colors.green),
-                  child: const Padding(
+                  child:  Padding(
                     padding: EdgeInsets.all(4.0),
                     child: Text(
                       'عروض',
-                      style: TextStyle(color: Colors.white, fontSize: 10),
+                      style: TextStyle(color: Colors.white, fontSize: 10.sp),
                     ),
                   ),
                 ),
@@ -92,15 +93,15 @@ class _BestSallerCardState extends State<BestSallerCard> {
             ),
             //SizedBox(height: 5,),
             SizedBox(
-              height: 94,
+              height: 80.h,
               //width: MediaQuery.of(context).size.width / 2.3,
               child: Image.asset(
                 widget.product.image,
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(
-              height: 5,
+             SizedBox(
+              height: 5.h,
             ),
             Align(
               alignment: AlignmentDirectional.centerEnd,
@@ -109,12 +110,12 @@ class _BestSallerCardState extends State<BestSallerCard> {
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: Colors.green),
-                child: const Padding(
+                child:  Padding(
                   padding:
                       EdgeInsets.only(top: 4.0, bottom: 4, left: 30, right: 8),
                   child: Text(
                     'الأعلى مبيعا',
-                    style: TextStyle(color: Colors.white, fontSize: 10),
+                    style: TextStyle(color: Colors.white, fontSize: 10.sp),
                   ),
                 ),
               ),
@@ -128,15 +129,15 @@ class _BestSallerCardState extends State<BestSallerCard> {
                   children: [
                     Text(
                       widget.product.productName,
-                      style: const TextStyle(fontSize: 12),
+                      style:  TextStyle(fontSize: 12.sp),
                     ),
                     Text(widget.product.productQuantity),
                   ],
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
             Stack(
               alignment: AlignmentDirectional.topStart,
@@ -168,13 +169,13 @@ class _BestSallerCardState extends State<BestSallerCard> {
                       //   return ShoppingPage();
                       // }));
                     },
-                    child: const CircleAvatar(
-                        radius: 17,
+                    child:  CircleAvatar(
+                        radius: 17.r,
                         backgroundColor: Colors.red,
                         child: Icon(
                           Icons.shopping_cart_outlined,
                           color: Colors.white,
-                          size: 20,
+                          size: 20.sp,
                         )),
                   ),
                 )

@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:salety_market/views/Category_Page.dart';
 import 'package:salety_market/views/Home_Page.dart';
 
 import '../Widgets/Navigation_bar.dart';
-import '../Widgets/Shopping/cart_has_products.dart';
+import '../Widgets/Shopping/cart_page.dart';
 import '../Widgets/Shopping/cart_provider.dart';
 import '../Widgets/product_of_category_grid_view.dart';
 import '../Widgets/search_widget.dart';
@@ -96,7 +97,7 @@ class ProductOfCategoriesPage extends StatelessWidget {
             SliverToBoxAdapter(
               child: Container(
                 width: double.infinity,
-                height: 40,
+                height: 40.h,
                 color: Colors.green,
               ),
             ),

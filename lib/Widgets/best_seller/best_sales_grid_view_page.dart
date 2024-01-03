@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../db_helper.dart';
 import '../../models/best_saller_model.dart';
@@ -65,7 +66,7 @@ class _BestSallerGridViewState extends State<BestSallerGridView> {
                 child: BestSallerCard(
                   product: products[index],
                   OnTap: () {
-                    dbHelper!.insert(
+                    dbHelper.insert(
                         CartModel(
                           numbersOfProduct: 1,
                           image: products[index].image,
@@ -89,11 +90,11 @@ class _BestSallerGridViewState extends State<BestSallerGridView> {
                 ),
               );
             },
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 7,
-                mainAxisSpacing: 7,
-                childAspectRatio: 1 / 1.6
+                // crossAxisSpacing: 7,
+                // mainAxisSpacing: 7,
+                childAspectRatio: 1.w / 1.4.h
               ),
           )
         : GridView.builder(
@@ -106,7 +107,7 @@ class _BestSallerGridViewState extends State<BestSallerGridView> {
                 child: BestSallerCard(
                   product: products[index],
                   OnTap: () {
-                    dbHelper!.insert(
+                    dbHelper.insert(
                         CartModel(
                           numbersOfProduct: 1,
                           image: products[index].image,
@@ -131,11 +132,11 @@ class _BestSallerGridViewState extends State<BestSallerGridView> {
                 ),
               );
             },
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
-                crossAxisSpacing: 7,
-                mainAxisSpacing: 7,
-                childAspectRatio: 1 / 1.5),
+                // crossAxisSpacing: 7,
+                // mainAxisSpacing: 7,
+                childAspectRatio: 1.h / .58.w),
           );
   }
 }

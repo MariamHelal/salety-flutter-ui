@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:salety_market/Widgets/category_list_view.dart';
 import 'package:salety_market/views/Home_Page.dart';
@@ -50,10 +51,10 @@ class _CategoryPageState extends State<CategoryPage> {
               ),
               // fixedSize: Size(10, 30),
             ),
-            child: const Icon(
+            child:  Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Colors.black,
-              size: 20,
+              size: 20.sp,
             ),
           ),
         ),
@@ -97,10 +98,10 @@ class _CategoryPageState extends State<CategoryPage> {
             children: [
               //SliverToBoxAdapter(child: SizedBox(height: 10,)),
 
-               const SizedBox(height: 10,
+                SizedBox(height: 10.h,
               ),
               Expanded(child: CategoryListView()),
-              const SizedBox(height: 10,),
+               SizedBox(height: 10.h,),
              // Center(child: Text('$size'),),
             ],
           ),

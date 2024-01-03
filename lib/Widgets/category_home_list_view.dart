@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../models/category_model.dart';
 import 'category_card.dart';
@@ -42,18 +43,36 @@ class CategoryHomeListView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 193.9,
+    final orientationDevice = MediaQuery.of(context).orientation;
+    return orientationDevice == Orientation.portrait?
+    SizedBox(
+      height: 150.h,
       child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
+          physics:  BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: catergories.length,
           itemBuilder: (context, index) {
             return CategoeryCard(
               category: catergories[index],
-              widthOfCard: 112,
-              heightOfCard: 194,
-              fontSizeOfCard: 17,
+              widthOfCard: 112.w,
+              heightOfCard: 190.h,
+              fontSizeOfCard: 17.sp,
+            );
+
+          }),
+    ):
+    SizedBox(
+      height: 80.w,
+      child: ListView.builder(
+          physics:  BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: catergories.length,
+          itemBuilder: (context, index) {
+            return CategoeryCard(
+              category: catergories[index],
+              widthOfCard: 50.w,
+              heightOfCard: 50.w,
+              fontSizeOfCard: 17.sp,
             );
 
           }),

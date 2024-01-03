@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../Widgets/Navigation_bar.dart';
 import '../Widgets/Shopping/cart_provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
@@ -43,16 +44,16 @@ class ProfilePage extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                side: const BorderSide(
+                side:  BorderSide(
                   color: Colors.black38,
-                  width: .5,
+                  width: .5.w,
                 ),
                 // fixedSize: Size(10, 30),
               ),
-              child: const Icon(
+              child:  Icon(
                 Icons.arrow_back_ios_new_rounded,
                 color: Colors.black,
-                size: 20,
+                size: 20.sp,
               ),
             ),
           ),
@@ -62,9 +63,9 @@ class ProfilePage extends StatelessWidget {
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  side: const BorderSide(
+                  side:  BorderSide(
                     color: Colors.black38,
-                    width: .5,
+                    width: .5.w,
                   ),
                   // fixedSize: Size(10, 30),
                 ),
@@ -106,14 +107,14 @@ class ProfilePage extends StatelessWidget {
                             width: double.infinity,
 
                             child: Column(
-                              children: const [
+                              children:  [
                                 SizedBox(
-                                  height: 70,
+                                  height: 70.h,
                                 ),
                                 Text(
                                   'مريم هلال',
                                   style: TextStyle(
-                                    fontSize: 17,
+                                    fontSize: 17.sp,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -126,7 +127,7 @@ class ProfilePage extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 10.h,
                                 )
                               ],
                             ),
@@ -146,13 +147,13 @@ class ProfilePage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const CircleAvatar(
+                               CircleAvatar(
                                 backgroundColor: Colors.red,
                                 radius: 15,
                                 child: Icon(
                                   Icons.camera_alt,
                                   color: Colors.white,
-                                  size: 17,
+                                  size: 17.sp,
                                 ),
                               )
                             ],
@@ -160,17 +161,17 @@ class ProfilePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SliverToBoxAdapter(
+                     SliverToBoxAdapter(
                       child: SizedBox(
-                        height: 20,
+                        height: 20.h,
                       ),
                     ),
                     SliverGrid.builder(
                       itemCount: icons.length,
                       itemBuilder: (context, index) {
                         return Container(
-                          width: 30,
-                          height: 40,
+                          width: 30.w,
+                          height: 40.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white,
@@ -199,9 +200,9 @@ class ProfilePage extends StatelessWidget {
                           crossAxisSpacing: 10,
                           childAspectRatio: 1 / 1),
                     ),
-                    const SliverToBoxAdapter(
+                     SliverToBoxAdapter(
                       child: SizedBox(
-                        height: 20,
+                        height: 20.h,
                       ),
                     ),
                     SliverToBoxAdapter(
@@ -215,15 +216,15 @@ class ProfilePage extends StatelessWidget {
                               color: Colors.red,
                             ),
                             child: Column(
-                              children: const [
-                                Icon(
+                              children:  [
+                                const Icon(
                                   Icons.support,
                                   color: Colors.white,
                                 ),
                                 SizedBox(
-                                  height: 5,
+                                  height: 5.h,
                                 ),
-                                Text(
+                                const Text(
                                   'مركز الدعم',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -233,7 +234,7 @@ class ProfilePage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(width: 10,),
+                           SizedBox(width: 10.w,),
                           Container(
                             padding: EdgeInsets.all(30),
                             width: MediaQuery.of(context).size.width *.43,
@@ -242,15 +243,15 @@ class ProfilePage extends StatelessWidget {
                               color: Colors.green,
                             ),
                             child: Column(
-                              children: const[
-                                Icon(
+                              children: [
+                                const Icon(
                                   Icons.exit_to_app,
                                   color: Colors.white,
                                 ),
                                 SizedBox(
-                                  height: 5,
+                                  height: 5.h,
                                 ),
-                                Text(
+                                const Text(
                                   'خروج',
                                   style: TextStyle(
                                     color: Colors.white,
@@ -288,17 +289,17 @@ class ProfilePage extends StatelessWidget {
                               height: 100,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                children: const [
-                                  SizedBox(height: 10,),
+                                children:  [
+                                  SizedBox(height: 10.h,),
                                   Text(
                                     'مريم هلال',
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 18.sp,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text(
+                                  const Text(
                                     'mariamhelal595@gmail.com',
                                     style: TextStyle(
                                       color: Colors.white,
@@ -306,7 +307,7 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 10,
+                                    height: 10.h,
                                   )
                                 ],
                               ),
@@ -329,13 +330,13 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const CircleAvatar(
+                                 CircleAvatar(
                                   backgroundColor: Colors.red,
                                   radius: 15,
                                   child: Icon(
                                     Icons.camera_alt,
                                     color: Colors.white,
-                                    size: 17,
+                                    size: 17.sp,
                                   ),
                                 )
                               ],
@@ -344,9 +345,9 @@ class ProfilePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SliverToBoxAdapter(
+                     SliverToBoxAdapter(
                       child: SizedBox(
-                        height: 20,
+                        height: 20.h,
                       ),
                     ),
                     SliverGrid.builder(
@@ -365,8 +366,8 @@ class ProfilePage extends StatelessWidget {
                                 icons[index],
                                 color: Colors.red,
                               ),
-                              const SizedBox(
-                                height: 5,
+                               SizedBox(
+                                height: 5.h,
                               ),
                               Text(
                                 profileMatrialListtitle[index],
@@ -384,9 +385,9 @@ class ProfilePage extends StatelessWidget {
                           crossAxisSpacing: 10,
                           childAspectRatio: 1 / .8),
                     ),
-                    const SliverToBoxAdapter(
+                     SliverToBoxAdapter(
                       child: SizedBox(
-                        height: 20,
+                        height: 20.h,
                       ),
                     ),
                     SliverToBoxAdapter(
@@ -402,20 +403,20 @@ class ProfilePage extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
+                              children:  [
                                 Icon(
 
                                   Icons.support,
                                   color: Colors.white,
-                                  size: 30,
+                                  size: 30.sp,
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 10.w,
                                 ),
                                 Text(
                                   'مركز الدعم',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   ),
@@ -423,7 +424,7 @@ class ProfilePage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(width: 10,),
+                           SizedBox(width: 10.w,),
                           Container(
                             padding: EdgeInsets.all(30),
                             width: MediaQuery.of(context).size.width *.45,
@@ -434,19 +435,19 @@ class ProfilePage extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const[
+                              children: [
                                 Icon(
                                   Icons.exit_to_app,
                                   color: Colors.white,
-                                  size: 30,
+                                  size: 30.sp,
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 10.w,
                                 ),
                                 Text(
                                   'خروج',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),

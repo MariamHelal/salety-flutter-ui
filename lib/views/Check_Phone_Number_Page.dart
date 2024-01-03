@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:salety_market/views/Change_Password_Page.dart';
 
@@ -101,11 +102,11 @@ class CheckPhoneNumberPage extends StatelessWidget {
                     }));
 
                   },
-                  child: const Center(
+                  child:  Center(
                     child: Text(
                       'تأكيد',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 25.sp,
                         color: Colors.white,
                       ),
                     ),

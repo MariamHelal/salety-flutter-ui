@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salety_market/Widgets/ShopByOffers/shop_by_offers_card.dart';
 
 import '../../models/shop_by_offers_model.dart';
@@ -11,17 +12,17 @@ class ShopByOffersGridView extends StatelessWidget {
       color: Colors.red,
       text1: '50 %',
       text2: 'خصم',
-      fontSize1: 25,
+      fontSize1: 25.sp,
       fontWeight2: FontWeight.w300,
-      fontSize2: 15,
+      fontSize2: 15.sp,
     ),
     ShopByOffersModel(
       fontWeight1: FontWeight.bold,
       color: Colors.lightBlue,
       text1: '40 %',
       text2: 'خصم',
-      fontSize1: 25,
-      fontSize2: 15,
+      fontSize1: 25.sp,
+      fontSize2: 15.sp,
       fontWeight2: FontWeight.w300,
     ),
     ShopByOffersModel(
@@ -29,8 +30,8 @@ class ShopByOffersGridView extends StatelessWidget {
       color: Colors.purple,
       text1: '30 %',
       text2: 'خصم',
-      fontSize1: 25,
-      fontSize2: 15,
+      fontSize1: 25.sp,
+      fontSize2: 15.sp,
       fontWeight2: FontWeight.w300,
     ),
     ShopByOffersModel(
@@ -38,8 +39,8 @@ class ShopByOffersGridView extends StatelessWidget {
       color: Colors.teal,
       text1: 'اختيارات',
       text2: 'الشهر',
-      fontSize1: 20,
-      fontSize2: 20,
+      fontSize1: 17.sp,
+      fontSize2: 17.sp,
       fontWeight2: FontWeight.bold,
     ),
     ShopByOffersModel(
@@ -47,8 +48,8 @@ class ShopByOffersGridView extends StatelessWidget {
       color: Colors.lightGreen,
       text1: 'أقل',
       text2: '99 SAR',
-      fontSize1: 20,
-      fontSize2: 20,
+      fontSize1: 20.sp,
+      fontSize2: 20.sp,
       fontWeight2: FontWeight.w500,
     ),
     ShopByOffersModel(
@@ -56,8 +57,8 @@ class ShopByOffersGridView extends StatelessWidget {
       color: Colors.orangeAccent,
       text1: 'اشتري 1 واحصل علي 1',
       text2: 'مجانا',
-      fontSize1: 13,
-      fontSize2: 17,
+      fontSize1: 13.sp,
+      fontSize2: 16.sp,
       fontWeight2: FontWeight.bold,
     ),
   ];
@@ -67,11 +68,11 @@ class ShopByOffersGridView extends StatelessWidget {
     return orientationDevice == Orientation.portrait
         ? SliverGrid.builder(
             itemCount: offers.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 17,
                 mainAxisSpacing: 17,
-                childAspectRatio: 1 / 1.2),
+                childAspectRatio: 1.w / 1.2.h),
             itemBuilder: (BuildContext context, int index) {
               return ShopByOffersCard(
                 shopByOffer: offers[index],
@@ -80,11 +81,11 @@ class ShopByOffersGridView extends StatelessWidget {
           )
         : SliverGrid.builder(
             itemCount: offers.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
-                childAspectRatio: 1 / .75),
+                childAspectRatio: 1.h /.3.w),
             itemBuilder: (BuildContext context, int index) {
               return ShopByOffersCard(
                 shopByOffer: offers[index],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:salety_market/views/Home_Page.dart';
 
@@ -11,10 +12,11 @@ class BestSallerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.grey[200],
         elevation: 0,
-        title: const Text('عربة التسوق',style: TextStyle(
+        title: const Text('الأكثر مبيعا',style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
         ),),
@@ -84,7 +86,7 @@ class BestSallerPage extends StatelessWidget {
           child: Column(
             children: [
 
-              const SizedBox(height: 10,),
+               SizedBox(height: MediaQuery.of(context).size.height /30,),
               const Expanded(child: BestSallerGridView()),
 
             ],

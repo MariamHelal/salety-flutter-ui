@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salety_market/views/Login_Page.dart';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class RegisterPage extends StatelessWidget {
@@ -45,18 +46,19 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               //crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const SizedBox(
-                  height: 30.0,
-                ),
+                //  SizedBox(
+                //   height: 30.h,
+                // ),
                 Column(
                   //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
-                  children: const [
+                  children:  [
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         'انشاء حساب جديد',
-                        style: TextStyle(fontSize: 40),
+
+                        style: TextStyle(fontSize: 27.sp,fontWeight: FontWeight.bold),
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -65,7 +67,7 @@ class RegisterPage extends StatelessWidget {
                       child: Text(
                         'أدخل بياناتك لإنشاء حساب',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.w100,
                           color: Colors.grey,
                         ),
@@ -73,8 +75,8 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20.0,
+                 SizedBox(
+                  height: 20.h,
                 ),
                 TextFormField(
                   controller: nameController,
@@ -90,8 +92,8 @@ class RegisterPage extends StatelessWidget {
                     hintTextDirection: TextDirection.rtl,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                 SizedBox(
+                  height: 20.h,
                 ),
                 TextFormField(
                   controller: emailController,
@@ -112,8 +114,8 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                 SizedBox(
+                  height: 20.h,
                 ),
                 TextFormField(
                   controller: passController,
@@ -139,8 +141,8 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
+                 SizedBox(
+                  height: 30.h,
                 ),
 
                 ElevatedButton(
@@ -155,31 +157,31 @@ class RegisterPage extends StatelessWidget {
                     print(emailController.text);
                     print(passController.text);
                   },
-                  child: const Center(
+                  child:  Center(
                     child: Text(
                       'اشتراك',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                 SizedBox(
+                  height: 20.h,
                 ),
-                const Center(
+                 Center(
                   child: Text(
                     'أو الاشتراك مع',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 20.sp,
                     ),
                   ),
                 ),
                 Row(
                   children: [
                     Container(
-                      height: 45,
+                      height: 45.h,
                       width: MediaQuery.of(context).size.width/2.4 ,
                       child: ElevatedButton(
 
@@ -192,9 +194,9 @@ class RegisterPage extends StatelessWidget {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          side: const BorderSide(
+                          side:  BorderSide(
                             color: Color(0xFEE52C34),
-                            width: .7,
+                            width: 0.7.h,
                           ),
                           // fixedSize: Size(10, 30),
                         ),
@@ -205,15 +207,15 @@ class RegisterPage extends StatelessWidget {
                           children: [
                             Image.asset('assets/google+.png',
                             ),
-                            const SizedBox(
-                              width: 8,
+                             SizedBox(
+                              width: 8.w,
                             ),
-                            const Text(
+                             Text(
                               'Google',
                               style: TextStyle(
                                   color: Color(0xFEE52C34),
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15
+                                  fontSize: 15.sp
                               ),
                             ),
                           ],
@@ -222,7 +224,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                     const Spacer(flex: 1,),
                     Container(
-                      height: 45,
+                      height: 45.h,
                       width: MediaQuery.of(context).size.width/2.4 ,
                       child: OutlinedButton(
 
@@ -236,9 +238,9 @@ class RegisterPage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
 
                           backgroundColor: Colors.white,
-                          side: const BorderSide(
+                          side:  BorderSide(
                             color: Colors.indigo,
-                            width: .7,
+                            width: 0.7.h,
                           ),
 
                           // fixedSize: Size(10, 30),
@@ -247,22 +249,22 @@ class RegisterPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.max,
-                          children: const [
+                          children:  [
                             Icon(
                               Icons.facebook,
                               color: Colors.indigo,
-                              size: 30,
+                              size: 30.sp,
 
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 10.w,
                             ),
                             Text(
                               'Facebook',
                               style: TextStyle(
                                   color: Colors.indigo,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15
+                                  fontSize: 15.sp
                               ),
                             ),
                           ],
@@ -282,13 +284,13 @@ class RegisterPage extends StatelessWidget {
                         return LoginPage();
                       }));
                     }, child: Row(
-                      children: const [
-                        Text('تسجيل الدخول',style: TextStyle(
+                      children:  [
+                        const Text('تسجيل الدخول',style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,
                         ),),
                         Icon(Icons.play_arrow_rounded,
-                          size: 25,
+                          size: 25.sp,
                           color: Colors.black,),
                       ],
                     ),

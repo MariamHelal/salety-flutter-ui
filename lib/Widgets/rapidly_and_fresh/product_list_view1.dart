@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:salety_market/Widgets/best_seller/best_saller_card.dart';
 
@@ -52,8 +53,48 @@ class _ProductListView1State extends State<ProductListView1> {
   @override
   Widget build(BuildContext context) {
     final cart=Provider.of<CartProvider>(context);
-    return SizedBox(
-      height: 275,
+    final orientationDevice = MediaQuery.of(context).orientation;
+    return orientationDevice == Orientation.portrait?
+    SizedBox(
+      height: 230.h,
+      child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: BestSallerCard(
+                product: products[index],
+                OnTap: () {
+                  dbHelper!.insert(
+                      CartModel(
+                        numbersOfProduct: 1,
+                        image: products[index].image,
+                        productName: products[index].productName,
+                        productQuantity: products[index].productQuantity,
+                        productPrice: products[index].productPrice,
+                        totalPriceOfProduct: products[index].productPrice,
+                        id: products[index].id,
+                        productId: products[index].productName.toString(),
+                      )
+                  ).then((value) {
+                    print('product is added to cart');
+                    cart.addTotalPrice(double.parse(products[index].productPrice.toString()));
+                    cart.addCounter();
+                  }).onError((error, stackTrace) {
+                    print(error.toString());
+                  });
+
+
+
+                },
+              ),
+            );
+          }),
+    ):
+    SizedBox(
+      height: 114.w,
       child: ListView.builder(
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,

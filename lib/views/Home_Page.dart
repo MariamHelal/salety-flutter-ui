@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:salety_market/Widgets/Shopping/cart_provider.dart';
 import 'package:salety_market/Widgets/rapidly_and_fresh/product_list_view1.dart';
@@ -7,7 +8,7 @@ import 'package:salety_market/Widgets/search_widget.dart';
 import 'package:salety_market/views/best_saller_page.dart';
 import 'package:salety_market/views/profile_page.dart';
 import '../Widgets/ShopByOffers/shop_by_offers_grid_view.dart';
-import '../Widgets/Shopping/cart_has_products.dart';
+import '../Widgets/Shopping/cart_page.dart';
 import '../Widgets/best_seller/best_saller_list_view.dart';
 import '../Widgets/category_home_list_view.dart';
 import '../Widgets/image_slider/Image_Slider.dart';
@@ -205,15 +206,15 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
               ),
               const SliverToBoxAdapter(child: SalesListView()),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
               ),
               SliverToBoxAdapter(
@@ -227,15 +228,15 @@ class _HomePageState extends State<HomePage> {
                         }));
                       },
                       child: Row(
-                        children: const [
-                          Text(
+                        children:  [
+                          const Text(
                             'عرض الكل',
                             style: TextStyle(color: Colors.grey),
                           ),
                           Icon(
                             Icons.play_arrow_rounded,
                             color: Colors.grey,
-                            size: 20,
+                            size: 20.sp,
                           )
                         ],
                       ),
@@ -243,25 +244,25 @@ class _HomePageState extends State<HomePage> {
                     const Spacer(
                       flex: 2,
                     ),
-                    const Text(
+                     Text(
                       'التصنيفات',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 22,
+                        fontSize: 22.sp,
                       ),
                     ),
                   ],
                 ),
               ),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 10,
+                  height: 10.h,
                 ),
               ),
               SliverToBoxAdapter(child: CategoryHomeListView()),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 10,
+                  height: 10.h,
                 ),
               ),
               SliverToBoxAdapter(
@@ -301,16 +302,16 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 10,
+                  height: 10.h,
                 ),
               ),
               const BestSallerListView(),
 
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                   child: SizedBox(
-                height: 10,
+                height: 10.h,
               )),
 
              SliverToBoxAdapter(child: ImageSlider()),
@@ -325,15 +326,15 @@ class _HomePageState extends State<HomePage> {
                             }));
                       },
                       child: Row(
-                        children: const [
-                          Text(
+                        children:  [
+                          const Text(
                             'عرض الكل',
                             style: TextStyle(color: Colors.grey),
                           ),
                           Icon(
                             Icons.play_arrow_rounded,
                             color: Colors.grey,
-                            size: 20,
+                            size: 20.sp,
                           )
                         ],
                       ),
@@ -341,57 +342,57 @@ class _HomePageState extends State<HomePage> {
                     const Spacer(
                       flex: 2,
                     ),
-                    const Text(
+                     Text(
                       'تسوق حسب العروض',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 22,
+                        fontSize: 22.sp,
                       ),
                     ),
                   ],
                 ),
               ),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 10,
+                  height: 10.h,
                 ),
               ),
 
               ShopByOffersGridView(),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
               ),
-              const SliverToBoxAdapter(child: Text(
+               SliverToBoxAdapter(child: Text(
                 textAlign: TextAlign.right,
                 'طازج وسريع',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 22,
+                  fontSize: 22.sp,
                 ),
               ),),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
               ),
               SliverToBoxAdapter(child: ProductListView1(),),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
               ),
               SliverToBoxAdapter(child: ProductListView2(),),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
               ),
               const SliverToBoxAdapter(child: FreshSales(),),
-              const SliverToBoxAdapter(
+               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 10,
+                  height: 10.h,
                 ),
               ),
               //  SliverToBoxAdapter(child: Text('$size'))

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../views/Home_Page.dart';
 
 class NavigationBarWidget extends StatefulWidget {
@@ -17,7 +17,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
     return NavigationBar(
      // shadowColor: Colors.green,
       backgroundColor: Colors.white,
-      height: 65,
+      height: 55.h,
       onDestinationSelected: (int index) {
         setState(() {
           currentPageIndex = index;

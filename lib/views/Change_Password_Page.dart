@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});
@@ -21,16 +22,16 @@ class ChangePasswordPage extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
-              side: const BorderSide(
+              side:  BorderSide(
                 color: Colors.black38,
-                width: .5,
+                width: .5.w,
               ),
               // fixedSize: Size(10, 30),
             ),
-            child: const Icon(
+            child:  Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Colors.black,
-              size: 20,
+              size: 20.sp,
             ),
           ),
         ),
@@ -44,13 +45,13 @@ class ChangePasswordPage extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height/50,
                 ),
-                const Align(
+                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
                       'أدخل كلمة المرور الجديدة',
                     style: TextStyle(
                       fontWeight: FontWeight.w200,
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       color: Colors.grey,
                     ),
 
@@ -129,11 +130,11 @@ class ChangePasswordPage extends StatelessWidget {
                       }));
 
                     },
-                    child: const Center(
+                    child:  Center(
                       child: Text(
                         'تغيير',
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 25.sp,
                           color: Colors.white,
                         ),
                       ),

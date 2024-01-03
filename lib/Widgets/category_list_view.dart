@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../models/category_model.dart';
 import 'category_card.dart';
@@ -47,12 +48,12 @@ class CategoryListView extends StatelessWidget {
     return OrientationBuilder(builder: (context, orientation) {
       return orientation == Orientation.portrait
           ? GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 //mainAxisExtent: 100,
                   crossAxisCount: 2,
-                  crossAxisSpacing: 25,
-                  mainAxisSpacing: 25,
-                  childAspectRatio: 1 / 1.4),
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  childAspectRatio: 1.w / 1.2.h),
               itemCount: catergories.length,
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
@@ -70,19 +71,19 @@ class CategoryListView extends StatelessWidget {
               },
             )
           : GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 //maxCrossAxisExtent: 100,
                 crossAxisCount: 4,
-                childAspectRatio: 1 /1.3,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
+                childAspectRatio: 1.h /1.3.h,
+                crossAxisSpacing: 15,
+                mainAxisSpacing: 15,
               ),
               itemCount: catergories.length,
               itemBuilder: (context, index) {
                 return CategoeryCard(
                     category: catergories[index],
-                    widthOfCard: MediaQuery.of(context).size.width / 2.5,
-                    heightOfCard: MediaQuery.of(context).size.width / 4,
+                    widthOfCard: MediaQuery.of(context).size.width / 4,
+                    heightOfCard: MediaQuery.of(context).size.width /7,
                     fontSizeOfCard: 20,);
               },
             );
